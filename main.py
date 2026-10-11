@@ -24,13 +24,17 @@ def remove_duplicates_from_list(items):
 if __name__ == "__main__":
     filename = DEFAULT_FILENAME
     remove_duplicates = DEFAULT_DUPLICATES
-    if len(sys.argv) == 3:
-        filename = sys.argv[1]
-        remove_duplicates = sys.argv[2].lower() == "yes"
-    else:
-        print("Se debe indicar el fichero como primer argumento")
+    if len(sys.argv) != 3:
+        print("Uso: python3 main.py <filename> <yes|no>")
         print("El segundo argumento indica si se quieren eliminar duplicados")
         sys.exit(1)
+
+    filename = sys.argv[1]
+    duplicate_option = sys.argv[2].lower()
+    if duplicate_option not in ("yes", "no"):
+        print("El segundo argumento debe ser 'yes' o 'no'")
+        sys.exit(1)
+    remove_duplicates = duplicate_option == "yes"
 
     print(f"Se leerán las palabras del fichero {filename}")
     file_path = os.path.join(".", filename)
