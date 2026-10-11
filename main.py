@@ -10,14 +10,14 @@ DEFAULT_FILENAME = "words.txt"
 DEFAULT_DUPLICATES = False
 
 
-def sort_list(items, ascending=True):
+def sort_list(items: list, ascending: bool =True) -> list:
     if not isinstance(items, list):
         raise RuntimeError(f"No puede ordenar {type(items)}")
 
     return sorted(items, reverse=(not ascending))
 
 
-def remove_duplicates_from_list(items):
+def remove_duplicates_from_list(items: list) -> list:
     return list(set(items))
 
 
